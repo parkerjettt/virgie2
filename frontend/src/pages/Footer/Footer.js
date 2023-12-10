@@ -1,5 +1,5 @@
 import React from 'react'
-import {FiFacebook, AiOutlineHeart, AiOutlineInstagram, IoLogoYoutube} from 'react-icons/all';
+import {FiFacebook, AiOutlineHeart, AiOutlineInstagram} from 'react-icons/all';
 import { Input,Stack } from '@chakra-ui/react'
 import './footercss.css'
 import { Link } from 'react-router-dom';
@@ -37,9 +37,7 @@ const Footer = () => {
                         <li className="footerIcons">  
                             <AiOutlineInstagram size="25" />
                         </li>
-                        <li className="footerIcons">
-                            <IoLogoYoutube size="25"/>
-                        </li>
+                        
                     </ul>
                 </div>
 
