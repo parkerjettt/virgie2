@@ -49,12 +49,27 @@ const Checkout = ({history}) => {
                         <label className="this-label">Country</label><br /> 
                         <Stack spacing={3}>
                             
-                            <Select variant="flushed" onChange = {(e) => setCountry(e.target.value)} >
+                        <Select variant="flushed" onChange={(e) => setCountry(e.target.value)}>
                                 <option value="Maroc">Maroc</option>
                                 <option value="Algerie">Algerie</option>
                                 <option value="France">France</option>
                                 <option value="Espagne">Espagne</option>
-                            </Select>
+                                <option value="USA">USA</option>
+                                <option value="PH">Philippines</option>
+                                <option value="Taiwan">Taiwan</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Italy">Italy</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Japan">Japan</option>
+                                <option value="China">China</option>
+                                <option value="India">India</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="Mexico">Mexico</option>
+                                {/* Add more countries as needed */}
+                        </Select>
                             
                         </Stack>
                         <div className="city-cp-check">
@@ -91,7 +106,10 @@ const Checkout = ({history}) => {
                         </div>
 
                         <input onChange = {(e)=> {setcarddetails(false) ; setPayment('paypal')}} type="radio" name="payment" id="paypal"/><label for="paypal" className="this-label"> Paypal</label>
+                        
                         <Image src= 'https://i.imgur.com/W5vSLzb.png' alt="paypal" width="120px" height="40px"/>
+
+                        <input onChange = {(e)=> {setcarddetails(false) ; setPayment('Cash on Delivery')}} type="radio" name="cod" id="cod"/><label for="cod" className="cod"> Cash on Delivery</label>
                         <div class="confirm">
                           <input type="submit" className="confirm-check" value="Place to order"/>
                         </div>

@@ -70,6 +70,13 @@ const Order = ({match,history}) => {
     const deliverhandler = () =>{
         dispatch(deliverOrder(order))
     }
+
+    const deliverOrCashOnDeliveryHandler = () => {
+        // If payment method is Cash on Delivery, mark the order as delivered directly
+        if (order.paymentMethod === "Cash on Delivery") {
+          dispatch(deliverOrder(order));
+        }
+    }
     return loading || loadingDeliver ? <div className='loading-product'>
                         <HashLoader   color={"#1e1e2c"}  loading={loading || loadingDeliver} size={50} />
                      </div> : error ? <h1>{error}</h1> :
@@ -140,7 +147,7 @@ const Order = ({match,history}) => {
                         </div>
                         <div className = 'bottominfos'>
                         <h1 className = 'orderid'>Order : {order._id}</h1>
-                        {!order.isPaid && (
+                        {!order.isPaid &&  !order.paymentMethod === "Cash on Delivery" && (
                             <>
                             {loadingpay && <div className='loading-product'>
                                             <HashLoader   color={"#1e1e2c"}  loading={loading} size={50} />
@@ -153,10 +160,14 @@ const Order = ({match,history}) => {
                                            </div>}
                             </>
                         )}
-                        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered &&(
+                        {userInfo && !userInfo.isAdmin && order.isPaid && !order.isDelivered &&(
                             <Button   height="40px" width = "200px"
                             size = "lg" onClick = {deliverhandler} leftIcon = {<IoMdDoneAll size = '16' />} colorScheme ='blue' size="xs" >DELIVERED</Button>
                         )}
+                        {userInfo || userInfo.isAdmin && !order.isPaid && order.paymentMethod === "Cash on Delivery" && !order.isDelivered &&(
+                            <Button   height="40px" width = "200px"
+                            size = "xl" onClick = {deliverOrCashOnDeliveryHandler} leftIcon = {<IoMdDoneAll size = '25' />} colorScheme ='blue' size="l" >COD DELIVERED</Button>
+                        ) }
 
                         </div>
 

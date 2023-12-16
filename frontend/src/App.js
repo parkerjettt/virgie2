@@ -23,6 +23,7 @@ import Edituser from './pages/Useredit/Edituser'
 import Products from './pages/products/products'
 import Editproduct from './pages/Editproduct/Editproduct'
 import Orders from './pages/Orders/Orders'
+import Likes from './pages/Likes/likes'
 
 
  const App = () => { 
@@ -47,8 +48,10 @@ import Orders from './pages/Orders/Orders'
           :
          <>
                  <Nav/>
-                 <Switch>              
+                 <Switch>      
+                          
                  <Route path="/" exact component={Home}/>
+                 <Route path="/likes" component={Likes}/>
                  <Route path="/about" component={About}/>
                  <Route path="/shop" component={Shop}/>
                  <Route path="/contactus" component={Contactus}/>
